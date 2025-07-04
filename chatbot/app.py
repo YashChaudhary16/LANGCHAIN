@@ -6,6 +6,9 @@ from langchain_core.output_parsers import StrOutputParser
 
 os.environ["ANTHROPIC_API_KEY"] = os.getenv("ANTHROPIC_API_KEY")
 
+from dotenv import load_dotenv
+load_dotenv(dotenv_path="chatbot/.env", override=True)
+
 
 os.environ["LANGCHAIN_SMITH_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_SMITH_TRACING"] = "true"
