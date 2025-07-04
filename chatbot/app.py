@@ -10,11 +10,11 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path="chatbot/.env", override=True)
 
 
-os.environ["LANGCHAIN_SMITH_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_SMITH_TRACING"] = "true"
-os.environ["LANGSMITH_ENDPOINT"] = "https://api.smith.langchain.com"
-os.environ["LANGSMITH_PROJECT"] = os.getenv("LANGSMITH_PROJECT")
-os.environ["LANGSMITH_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
+# os.environ["LANGCHAIN_SMITH_TRACING_V2"] = "true"
+# os.environ["LANGCHAIN_SMITH_TRACING"] = "true"
+# os.environ["LANGSMITH_ENDPOINT"] = "https://api.smith.langchain.com"
+# os.environ["LANGSMITH_PROJECT"] = os.getenv("LANGSMITH_PROJECT")
+# os.environ["LANGSMITH_API_KEY"] = os.getenv("LANGSMITH_API_KEY")
 
 st.title("Claude Chat")
 
