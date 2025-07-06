@@ -20,7 +20,7 @@ prompt = ChatPromptTemplate.from_messages([
 user_input = st.text_input("Ask me anything:")
 
 # model = ChatAnthropic(model="claude-3-5-haiku-20241022")
-llm = Ollama(model="gemma3")
+llm = Ollama(model="llama3")
 output_parser = StrOutputParser()
     
 # Use the prompt template
