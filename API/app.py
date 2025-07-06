@@ -28,7 +28,7 @@ paid_llm = ChatAnthropic(model="claude-3-5-haiku-20241022")
 free_llm = Ollama(model="gemma3")
 
 prompt1 = ChatPromptTemplate.from_template("Explain me {topic} in 1 line.")
-prompt2 = ChatPromptTemplate.from_template("Write me a poem about {topic} in 10 lines.")
+prompt2 = ChatPromptTemplate.from_template("Write me a riddle about{topic}.")
 
 add_routes(
     app,
