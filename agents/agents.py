@@ -34,7 +34,8 @@ agent_executor = initialize_agent(
     tools,
     llm,
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,  # or AgentType.REACT_DESCRIPTION
-    verbose=True
+    verbose=True,
+    max_iterations=3
 )
 
 # --- 7. Invoke the Agent with Queries ---
