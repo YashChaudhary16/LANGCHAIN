@@ -2,7 +2,6 @@ import streamlit as st
 import os
 from langchain_groq import ChatGroq
 from langchain_community.document_loaders import WebBaseLoader
-from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
@@ -28,12 +27,12 @@ if "vectorstore" not in st.session_state:
     st.session_state.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 
     st.session_state.final_docs = st.session_state.text_splitter.split_documents(
-        st.session_state.docs[:20]
+        st.session_state.docs[:20], 
+        embedding=st.session_state.embeddings
     )
 
     st.session_state.vectorstore = FAISS.from_documents(
-        st.session_state.final_docs,
-        embedding=st.session_state.embeddings
+        st.session_state.final_docs
     )
 
     # st.session_state.retriever = st.session_state.vectorstore.as_retriever()
@@ -62,21 +61,16 @@ retrieval_chain = create_retrieval_chain(
     document_chain
 )
 
-user_query = st.text_input("Enter your query/question:")
+prompt = st.text_input("Enter your query/question:")
 
-if user_query:
+if prompt:
     st.write("Thinking...")
     start_time = time.time()
-    response = retrieval_chain.invoke({"input": user_query})
+    response = retrieval_chain.invoke({"input": prompt})
     end_time = time.time()
     st.write(f"Answer: {response['answer']}")
     st.write(f"Time taken: {end_time - start_time:.2f} seconds")
 
-    with st.expander("View Context"):
-        for i, doc in enumerate(response["context"]):
-            st.write(f"Document {i+1}:")
-            st.write(doc.page_content)
-            st.write("-"*100)
 
 
 
