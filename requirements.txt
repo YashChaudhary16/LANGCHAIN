@@ -17,3 +17,4 @@ faiss-cpu
 arxiv
 groq
 langchain-groq
+sentence-transformers
